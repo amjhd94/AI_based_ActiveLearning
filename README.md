@@ -1,4 +1,4 @@
-# AI_based_ActiveLearning
+# AI-based Active Learning
 ### AI-based explorer agents discovering the most informative training data within the input domain. 
 The agents take advantage of likelihood and output weighted acuiqisiotn funxctions to search the input domain for discovering the most informative point to train neural network models.
 
