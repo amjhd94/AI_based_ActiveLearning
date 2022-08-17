@@ -6,7 +6,22 @@ import numpy as np
 
 
 class active_sampling():
-    def __init__(self, data, obj_fcn, inputs=None, epochs=10000, batch_size=500):
+    """
+
+        Parameters
+        ----------
+        data : Training dataset in the form [X_train, y_train].
+        
+        obj_fcn : The objective function.
+        
+        inputs : Input object containing the features of the exploration domain - refer to inputs.py.
+        
+        epochs : (optional: The default is 3000) Training epochs at each iteration.
+            
+        batch_size : (optional: The default is 512) Batch size
+
+        """
+    def __init__(self, data, obj_fcn, inputs, epochs=3000, batch_size=512):
         self.data = data
         self.inputs = inputs
         self.epochs = epochs
@@ -15,8 +30,25 @@ class active_sampling():
         
         
         self.ens_model = UQ_NN(MyModel, self.data, epochs=self.epochs, ens_verbose=False)
+        
     
-    def optimize(self, acquisition, n_iter, num_restarts=0, callback=True):
+    def optimize(self, acquisition, n_iter, callback=True):
+        """
+
+        Parameters
+        ----------
+        acquisition : acquisition function - one of "us", "us_lw" and "us_lgw".
+        
+        n_iter : Number of iterartions, i.e., final training dataset size.
+            
+        callback : (optional) Tracks how long each iteration takse to complete.
+
+        Returns
+        -------
+        ens_model_list : List of NN ensemble model containing the trained 
+                         model at each iteration.
+
+        """
         
         self.acquisition = acquisition
         
