@@ -3,10 +3,20 @@ import numpy as np
 from utils import custom_KDE
 
 class likelihood():
+    """
+        
+    Parameters
+    ----------
+    ens_model : The NN ensemble model.
     
+    inputs : Input object containing the features of the exploration domain - refer to inputs.py
+    
+    weight_type : (optional: The default is "importance") acquisition weight type.
+                    Can be one of "nominal", "importance" and "importance_ho" (High order importance)
+
+    """
     def __init__(self, ens_model, inputs, weight_type="importance", 
                   c_w2=1, c_w3=1, tol=1e-5):
-
         self.model = ens_model
         self.inputs = inputs
         self.weight_type = self.check_weight_type(weight_type)
