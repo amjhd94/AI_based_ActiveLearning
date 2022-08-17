@@ -3,8 +3,31 @@ import numpy as np
 import tensorflow as tf
 
 class UQ_NN():
-    def __init__(self, model_class, train, val_pct=0, N=2, lr=0.01, epochs=100, 
-                 batch_size=1000, fit_verbose=0, ens_verbose=False):
+    """
+
+    Parameters
+    ----------
+    model_class : The individual NN model of the ensemble - refer to "base_model.py".
+    
+    train : Training dataset of form [X_train, y_train].
+        
+    val_pct : (optional: The default is 0) ratio of the "train" to be used as validation dataset.
+    
+    N : (optional: The default is 2) ensemble size.
+    
+    lr : (optional: The default is 0.001) Learning rate.
+    
+    epochs : (optional: The default is 3000) Training epochs at each iteration.
+            
+    batch_size : (optional: The default is 512) Batch size.
+    
+    fit_verbose : (optional: The default is 0) Each NN training log.
+    
+    ens_verbose : (optional: The default is False) Ensemble training log.
+
+    """
+    def __init__(self, model_class, train, val_pct=0, N=2, lr=0.001, epochs=3000, 
+                 batch_size=512, fit_verbose=0, ens_verbose=False):
         self.model_class = model_class
         self.train = train
         self.val_pct = val_pct
@@ -31,6 +54,19 @@ class UQ_NN():
                 print(f'Model {i+1} is trained!')
         
     def _predict_mean_var(self, x):
+        """
+
+        Parameters
+        ----------
+        x : points where prediction is to be made.
+
+        Returns
+        -------
+        mean : Mean value of the ensemble prediction.
+        
+        var : Mean value of the ensemble prediction.
+
+        """
         Y = []
         for i in range(self.N):
             Y.append(self.m_list[i].predict(x, batch_size=self.batch_size))
@@ -41,7 +77,19 @@ class UQ_NN():
         return mean, var
     
     def _predictive_jac_hess(self, x, compute_hess=False):
+        """
+
+        Parameters
+        ----------
+        x : points where Jacobian and Hessian of the mean prediction are to be computed.
         
+        compute_hess : (optional: The default is False) wheatheror not to compute the Hessian.
+
+        Returns
+        -------
+        Jacobian and Hessian (if requested) of the ensemble via automatic differentiation.
+
+        """
         if compute_hess:
             if x.shape[0] <= 1000:
                 if x.shape[1] == 1:
