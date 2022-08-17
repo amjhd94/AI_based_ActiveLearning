@@ -1,6 +1,6 @@
 from scipy.interpolate import InterpolatedUnivariateSpline
 import numpy as np
-from utils import custom_KDE
+from core.utils import custom_KDE
 
 class likelihood():
     """
