@@ -1,6 +1,32 @@
 from likelihood import likelihood
 
 class acquisition_fcn():
+    """
+    
+    Parameters
+    ----------
+    acquisition : Type of acquisition function for domain exploration.
+    
+        "us": Uncertainty Sampling 
+        (acquisition function for discovering data 
+         to reduce the prediction uncertainty of the 
+         final trained model)
+        
+        "us_lw" Likelihood-weighted uncertainty sampling 
+        (acquisition function for discovering data and 
+         sub-domains corresponding to extreme and rare outputs)
+        
+        "us_lgw" Likelihood/geometrically-weighted uncertainty sampling 
+        (acquisition function for discovering 
+         data and sub-domains corresponding to 
+         tipping points and topological extrema 
+         of the output).
+    
+    ens_model : The NN ensemble model.
+    
+    inputs : Input object containing the features of the exploration domain - refer to inputs.py
+    
+    """
     def __init__(self, acquisition, ens_model, inputs):
         self.acquisition = acquisition
         self.model = ens_model
