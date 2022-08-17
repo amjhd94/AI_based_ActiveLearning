@@ -247,5 +247,3 @@ class LogNormalInputs(Inputs):
         const = np.dot(np.log(x) - self.mu, self.inv)
         pdf = self.pdf(x)
         return - (1 + const)/x * pdf[:,None] 
-
-
