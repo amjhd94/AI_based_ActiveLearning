@@ -29,7 +29,7 @@ _, orig_pdf = pdf_orig_data.evaluate()
 #%% Initial datasetand
 
 n_init = 2
-x_init = np.random.uniform(low=-1, high=1, size=(n_init,1))
+x_init = np.random.uniform(low=domain[0][0], high=domain[0][1], size=(n_init,1))
 
 y_init =  0*(x_init<0) + np.sqrt(np.abs(x_init))*(x_init>=0)
 
@@ -103,5 +103,3 @@ plt.subplot(1,2,2)
 plt.plot(np.array(R2_map))
 plt.xlabel('Iterations')
 plt.ylabel('function and model $R^2$')
-
-
