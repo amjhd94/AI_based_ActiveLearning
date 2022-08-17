@@ -1,7 +1,7 @@
 from ensemble_model import UQ_NN
 from base_model import MyModel
 import time
-from acquisition_fcn import acquisition_fcn
+from core.acquisition_fcn import acquisition_fcn
 import numpy as np
 
 
