@@ -19,6 +19,7 @@ With the packages installed, the code is ready to run.
 
 ## Tutorial
 The demo code `RareEvent_TippingPoint_discovery_demo.py` shows the process of discovering important training data to create a deep neural network that most accurately identifies and models [Hopf bifurcation](https://www.math.colostate.edu/~shipman/47/volume3b2011/M640_MunozAlicea.pdf) diagram. The bifurcation point, $\mu = 0$, corresponds to an extreme event, a tipping point and a topological extremum - Hopf bifurcation diagram, $r$ vs $\mu$ and its posterior (in log scale), $p(r)$ are depicted below. 
+
 <img src="https://user-images.githubusercontent.com/110791799/185156764-5ebc179b-6612-4943-a1b2-fb3edb305bd9.png" alt="obj_fcn" width="500"/>
 
 The AI agent explores the domain and learns the location(s) that corresponds to the extreme events in the output, i.e., the bifurcation point. 
