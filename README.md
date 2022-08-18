@@ -2,7 +2,7 @@
 The agents take advantage of likelihood and output weighted acquisition functions to discover the most informative data to train neural network models. The resulting dataset includes frequent events, rare and extreme events, tipping points and topological extrema. 
 
 ## Getting Started
-The codes was written, run and tested by Spyder IDE version 4.2.5.
+The codes were written, run and tested by Spyder IDE version 4.2.5.
 The following is the required packages for this project:
 ```bash
 pip install numpy==1.21.2
