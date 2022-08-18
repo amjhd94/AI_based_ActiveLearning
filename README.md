@@ -75,7 +75,7 @@ Below we see two convergence accuracy metrics:
 
 <img src="https://user-images.githubusercontent.com/110791799/185176409-7e8d3751-1027-41ae-8618-86f96f408c23.png" alt="equ1" width="300"/>
     
-  2- coefficitne of determination, $R^2$, by comparing model prediction and the objective function.
+  2- coefficient of determination, $R^2$, by comparing model prediction and the objective function.
 
 <img src="https://user-images.githubusercontent.com/110791799/185178193-919b8fdb-9231-4f44-a231-4d5530d68815.png" alt="conv" width="500"/>
 
