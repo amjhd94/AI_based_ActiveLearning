@@ -25,7 +25,7 @@ The demo code `RareEvent_TippingPoint_discovery_demo.py` shows the process of di
 The AI agent explores the domain and learns the location(s) that corresponds to the extreme events in the output, i.e., the bifurcation point. 
 Note: In this case, both the AI and the black-box model are deep neural networks.
 
-1- We first begin by importing the required modules:
+### 1- We first begin by importing the required modules:
 ```py
 import sys
 sys.path.append('core/')
@@ -34,7 +34,7 @@ from inputs import *
 from core.utils import *
 import numpy as np
 ```
-2- Next, we define the objective function class. This class contains the "expensive" experiment that we cannot afford to run numerous times due to its high cost. In this demo, the `evaluate(x)` method in `obj_fcn()` class evaluates the value of output, $r$, corresponding to input `x`, by using the true bifurcation diagram formula. 
+### 2- Next, we define the objective function class. This class contains the "expensive" experiment that we cannot afford to run numerous times due to its high cost. In this demo, the `evaluate(x)` method in `obj_fcn()` class evaluates the value of output, $r$, corresponding to input `x`, by using the true bifurcation diagram formula. 
 ```py
 class obj_fcn():
     def evaluate(self, x):
@@ -42,7 +42,7 @@ class obj_fcn():
         return y
 ```
 
-3- Next, we define the exploration domain, the input probability density function (in this case it is assumed input domain is sampled from uniformly) and a reference dataset (test data) to compare our model against:
+### 3- Next, we define the exploration domain, the input probability density function (in this case it is assumed input domain is sampled from uniformly) and a reference dataset (test data) to compare our model against:
 ```py
 domain = [ [-1, 1] ]
 inputs = UniformInputs(domain)
@@ -51,14 +51,14 @@ x = pts
 y = obj_fcn().evaluate(x)
 ```
 
-4- In this step we initialize our exploration by creating an initial training dataset of size 2. This dataset is used by the AI to begin domain exploration.
+### 4- In this step we initialize our exploration by creating an initial training dataset of size 2. This dataset is used by the AI to begin domain exploration.
 ```py
 n_init = 2
 x_init = np.random.uniform(low=domain[0][0], high=domain[0][1], size=(n_init,1))
 y_init =  0*(x_init<0) + np.sqrt(np.abs(x_init))*(x_init>=0)
 ```
 
-5- For this demo, we stop the AI after it has explored and found the best 30 training data points. In practice, exploration can continue until an accuracy metric meets a criterion.
+### 5- For this demo, we stop the AI after it has explored and found the best 30 training data points. In practice, exploration can continue until an accuracy metric meets a criterion.
 ```py
 n_iter = 30
 data_init = [x_init, y_init]
